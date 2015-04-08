@@ -1,3 +1,17 @@
+#' Phonon Coupling Position and Strength Calculation
+#' 
+#' Function to return surface phonon frequencies and coupling coupling coefficents for dispersion
+#' 
+#' @param q wavevector [m^-1]
+#' @param omega     angular frequency [s^-1]
+#' @param d distance between graphene and substrate [m]
+#' @param omega_TO vector of frequencies of transverse optical phonons [cm^-1]
+#' @param omega_LO vector of frequencies of longitudinal optical phonons [cm^-1]
+#' @param eps_graphene  static permittivity 
+#' @param eps_substate  permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)
+#' 
+#' @note Currently only 3 phonons supported
+
 phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO=c(448,791.7,1128.1),
                           omega_LO=c(498.6,811.5,1317),
                           eps_graphene=3.9,
@@ -30,9 +44,15 @@ phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO=c(448,791.7,1128.1),
   
   omega_SO<-omega_SO*c_0*100*2*pi
   
-  for(i in 1:length(omega_TO)){
-                 alpha_phonons[i]*omega_SO[i]^2/(omega^2-omega[i]^2)
-  }
+  #sum_vector<-c()
+  #for(i in 1:length(omega_TO)){
+  #               sum_vector<-c(sum_vector,
+  #                             alpha_phonons[i]*omega_SO[i]^2/(omega^2-omega[i]^2))
+  #}
+  
+  #sum_matrix<-matrix(sum_vector,nrow=length(omega_TO))
+  
+  #return((eps_substrate*exp(-2*q*d)*rowSums(sum_matrix))^-1)
 
   return(
     (eps_substrate*exp(-2*q*d)*(
