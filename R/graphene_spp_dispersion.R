@@ -85,40 +85,42 @@ eps_total<-function(q,omega,eps_inf,E_f,tau){
 #' @export
 beta<-function(q,omega,d=3.5e-10,eps_inf){
   
-  omega_TO<-c(448,791.7,1128.1)
-  omega_LO<-c(498.6,811.5,1317)
-  
-  eps_00<-3.9
-  eps_1<-eps_00*(omega_TO[1]^2/omega_LO[1]^2)
-  eps_2<-eps_1*(omega_TO[2]^2/omega_LO[2]^2)
-  eps_3<-eps_2*(omega_TO[3]^2/omega_LO[3]^2)
-  eps_N<-2.4
-  
-  c(eps_00,eps_1,eps_2,eps_3,eps_N)
-  
-  f_1<-eps_00-eps_1
-  f_2<-eps_1-eps_2
-  f_3<-eps_2-eps_3
-  f_N<-eps_3-eps_N
-  
-  sum(c(f_1,f_2,f_3,f_N))
-  
-  omega_SO_1<-omega_LO[1]*(eps_1*(eps_00+1)/(eps_00*(eps_1+1)))^(1/2)
-  omega_SO_2<-omega_LO[2]*(eps_2*(eps_1+1)/(eps_1*(eps_2+1)))^(1/2)
-  omega_SO_3<-omega_LO[3]*(eps_3*(eps_2+1)/(eps_2*(eps_3+1)))^(1/2)
-  
-  omega_SO<-c(omega_SO_1,omega_SO_2,omega_SO_3)*c_0*100*2*pi
-  
-  alpha_1<-f_1/((eps_00+1)*(eps_1+1))
-  alpha_2<-f_2/((eps_1+1)*(eps_2+1))
-  alpha_3<-f_3/((eps_2+1)*(eps_3+1))
-  
-  return(
-    (eps_inf*exp(-2*q*d)*(
-      ((alpha_1)*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
-        ((alpha_2)*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
-        ((alpha_3)*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
-    ))^-1)
+   omega_TO<-c(448,791.7,1128.1)
+   omega_LO<-c(498.6,811.5,1317)
+   
+   phonon_coupling(q,omega,d,omega_TO,omega_LO,eps_substrate = eps_inf)
+#   
+#   eps_00<-3.9
+#   eps_1<-eps_00*(omega_TO[1]^2/omega_LO[1]^2)
+#   eps_2<-eps_1*(omega_TO[2]^2/omega_LO[2]^2)
+#   eps_3<-eps_2*(omega_TO[3]^2/omega_LO[3]^2)
+#   eps_N<-2.4
+#   
+#   c(eps_00,eps_1,eps_2,eps_3,eps_N)
+#   
+#   f_1<-eps_00-eps_1
+#   f_2<-eps_1-eps_2
+#   f_3<-eps_2-eps_3
+#   f_N<-eps_3-eps_N
+#   
+#   sum(c(f_1,f_2,f_3,f_N))
+#   
+#   omega_SO_1<-omega_LO[1]*(eps_1*(eps_00+1)/(eps_00*(eps_1+1)))^(1/2)
+#   omega_SO_2<-omega_LO[2]*(eps_2*(eps_1+1)/(eps_1*(eps_2+1)))^(1/2)
+#   omega_SO_3<-omega_LO[3]*(eps_3*(eps_2+1)/(eps_2*(eps_3+1)))^(1/2)
+#   
+#   omega_SO<-c(omega_SO_1,omega_SO_2,omega_SO_3)*c_0*100*2*pi
+#   
+#   alpha_1<-f_1/((eps_00+1)*(eps_1+1))
+#   alpha_2<-f_2/((eps_1+1)*(eps_2+1))
+#   alpha_3<-f_3/((eps_2+1)*(eps_3+1))
+#   
+#   return(
+#     (eps_inf*exp(-2*q*d)*(
+#       ((alpha_1)*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
+#         ((alpha_2)*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
+#         ((alpha_3)*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
+#     ))^-1)
 }
 
 #' Loss function
@@ -134,14 +136,14 @@ beta<-function(q,omega,d=3.5e-10,eps_inf){
 #' @return returns a matrix sutiable for plotting using image of the loss function as a function of both q and omega
 #' @examples
 #' 
-#' q <- seq(0,55,,500)*1e6
-#' omega <- seq(0,41.97,,500)*2*pi*1e12
-#'
+#' q<-seq(0,55,,500)*1e6
+#' omega<-seq(0,60,,500)*2*pi*1e12
+
 #' image(q/1e6,omega/(2*pi*1e12),
-#'      loss_function(q,omega,eps_inf = 2.25,E_f = 0.33),
-#'      zlim=c(0,5),col=grey(0:100/100),
-#'     xlab=expression(list(wavevector,italic(q)~(mu*m^-1))),
+#'      log(loss_function(q,omega,eps_inf = 2.4,E_f = 0.37,tau=1e-12)),col=rev(grey(0:100/100)),
+#'      xlab=expression(list(wavevector,italic(q)~(mu*m^-1))),
 #'      ylab=expression(list(frequency,italic(f)~(THz))))
+#'
 #'      
 #' @export
 loss_function <- function(q,omega,eps_inf,E_f,tau=1e-13){
