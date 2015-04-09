@@ -4,7 +4,7 @@
 \alias{eps_total}
 \title{Total dielectric function}
 \usage{
-eps_total(q, omega, eps_inf, E_f, tau)
+eps_total(q, omega, eps_inf, E_f, tau, omega_TO, omega_LO)
 }
 \arguments{
 \item{q}{wavevector [m^-1]}

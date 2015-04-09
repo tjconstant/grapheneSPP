@@ -4,7 +4,8 @@
 \alias{loss_function}
 \title{Loss function}
 \usage{
-loss_function(q, omega, eps_inf, E_f, tau = 1e-13)
+loss_function(q, omega, eps_inf, E_f, tau = 1e-13, omega_TO = c(448, 791.7,
+  1128.1), omega_LO = c(498.6, 811.5, 1270.6))
 }
 \arguments{
 \item{q}{wavevector or vector of wavevectors [m^-1]}

@@ -4,9 +4,8 @@
 \alias{phonon_coupling}
 \title{Phonon Coupling Position and Strength Calculation}
 \usage{
-phonon_coupling(q, omega, d = 3.5e-10, omega_TO = c(448, 791.7, 1128.1),
-  omega_LO = c(498.6, 811.5, 1317), eps_graphene = 3.9,
-  eps_substrate = 2.4)
+phonon_coupling(q, omega, d = 3.5e-10, omega_TO, omega_LO,
+  eps_graphene = 3.9, eps_substrate = 2.4)
 }
 \arguments{
 \item{q}{wavevector [m^-1]}

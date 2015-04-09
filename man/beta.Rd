@@ -4,7 +4,7 @@
 \alias{beta}
 \title{Coupling Term}
 \usage{
-beta(q, omega, d = 3.5e-10, eps_inf)
+beta(q, omega, d = 3.5e-10, eps_inf, omega_TO, omega_LO)
 }
 \arguments{
 \item{q}{wavevector [m^-1]}
