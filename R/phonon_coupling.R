@@ -12,8 +12,8 @@
 #' 
 #' @note Currently only 3 phonons supported
 
-phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO=c(448,791.7,1128.1),
-                          omega_LO=c(498.6,811.5,1317),
+phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
+                          omega_LO,
                           eps_graphene=3.9,
                           eps_substrate=2.4){
   
@@ -41,6 +41,8 @@ phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO=c(448,791.7,1128.1),
              f_phonons[i]/((eps_phonons[i]+1)*(eps_phonons[i+1]+1))
              )
   }
+  
+  print(omega_SO)
   
   omega_SO<-omega_SO*c_0*100*2*pi
   

@@ -63,7 +63,7 @@ v_f<-function(q,eps_inf){
 #' 
 #' [2] Hwang, E. H., Sensarma, R. & Das Sarma, S. Phys. Rev. B (2010), 82, 195406  
 #' @export
-eps_total<-function(q,omega,eps_inf,E_f,tau){
+eps_total<-function(q,omega,eps_inf,E_f,tau,...){
   1-v_f(q,eps_inf)*pi_drude(q,omega,eps_inf,E_f,tau)-1/(1+beta(q,omega,eps_inf = eps_inf))
 }
 
@@ -83,12 +83,12 @@ eps_total<-function(q,omega,eps_inf,E_f,tau){
 #' 
 #' [2] Hwang, E. H., Sensarma, R. & Das Sarma, S. Phys. Rev. B (2010), 82, 195406   
 #' @export
-beta<-function(q,omega,d=3.5e-10,eps_inf){
+beta<-function(q,omega,d=3.5e-10,eps_inf,...){
   
    omega_TO<-c(448,791.7,1128.1)
-   omega_LO<-c(498.6,811.5,1317)
+   omega_LO<-c(498.6,811.5,1270.6)
    
-   phonon_coupling(q,omega,d,omega_TO,omega_LO,eps_substrate = eps_inf)
+   phonon_coupling(q,omega,d,omega_TO,omega_LO,eps_substrate = eps_inf,...)
 #   
 #   eps_00<-3.9
 #   eps_1<-eps_00*(omega_TO[1]^2/omega_LO[1]^2)
@@ -146,8 +146,8 @@ beta<-function(q,omega,d=3.5e-10,eps_inf){
 #'
 #'      
 #' @export
-loss_function <- function(q,omega,eps_inf,E_f,tau=1e-13){
-  -Im(1/outer(q,omega,eps_total,eps_inf,E_f=E_f*e_charge,tau))
+loss_function <- function(q,omega,eps_inf,E_f,tau=1e-13,...){
+  -Im(1/outer(q,omega,eps_total,eps_inf,E_f=E_f*e_charge,tau,...))
 }
 
 
