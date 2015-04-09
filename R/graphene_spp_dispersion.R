@@ -89,38 +89,6 @@ beta<-function(q,omega,d=3.5e-10,eps_inf,omega_TO,omega_LO){
    #omega_LO<-c(498.6,811.5,1270.6)
    
    phonon_coupling(q,omega,d,omega_TO = omega_TO,omega_LO = omega_LO,eps_substrate = eps_inf)
-#   
-#   eps_00<-3.9
-#   eps_1<-eps_00*(omega_TO[1]^2/omega_LO[1]^2)
-#   eps_2<-eps_1*(omega_TO[2]^2/omega_LO[2]^2)
-#   eps_3<-eps_2*(omega_TO[3]^2/omega_LO[3]^2)
-#   eps_N<-2.4
-#   
-#   c(eps_00,eps_1,eps_2,eps_3,eps_N)
-#   
-#   f_1<-eps_00-eps_1
-#   f_2<-eps_1-eps_2
-#   f_3<-eps_2-eps_3
-#   f_N<-eps_3-eps_N
-#   
-#   sum(c(f_1,f_2,f_3,f_N))
-#   
-#   omega_SO_1<-omega_LO[1]*(eps_1*(eps_00+1)/(eps_00*(eps_1+1)))^(1/2)
-#   omega_SO_2<-omega_LO[2]*(eps_2*(eps_1+1)/(eps_1*(eps_2+1)))^(1/2)
-#   omega_SO_3<-omega_LO[3]*(eps_3*(eps_2+1)/(eps_2*(eps_3+1)))^(1/2)
-#   
-#   omega_SO<-c(omega_SO_1,omega_SO_2,omega_SO_3)*c_0*100*2*pi
-#   
-#   alpha_1<-f_1/((eps_00+1)*(eps_1+1))
-#   alpha_2<-f_2/((eps_1+1)*(eps_2+1))
-#   alpha_3<-f_3/((eps_2+1)*(eps_3+1))
-#   
-#   return(
-#     (eps_inf*exp(-2*q*d)*(
-#       ((alpha_1)*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
-#         ((alpha_2)*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
-#         ((alpha_3)*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
-#     ))^-1)
 }
 
 #' Loss function
