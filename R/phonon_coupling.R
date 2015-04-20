@@ -11,7 +11,7 @@
 #' @param eps_substate  permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)
 #' 
 #' @note Currently only 3 phonons supported
-
+#' @export
 phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
                           omega_LO,
                           eps_graphene=3.9,
@@ -42,7 +42,7 @@ phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
              )
   }
   
-  print(omega_SO)
+  #print(omega_SO)
   
   omega_SO<-omega_SO*c_0*100*2*pi
   
@@ -57,11 +57,15 @@ phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
   #return((eps_substrate*exp(-2*q*d)*rowSums(sum_matrix))^-1)
 
   return(
-    (eps_substrate*exp(-2*q*d)*(
-      ((alpha_phonons[1])*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
-        ((alpha_phonons[2])*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
-        ((alpha_phonons[3])*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
-    ))^-1)
-  
+    list(
+      beta=
+        (eps_substrate*exp(-2*q*d)*(
+          ((alpha_phonons[1])*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
+            ((alpha_phonons[2])*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
+            ((alpha_phonons[3])*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
+          ))^-1,
+      omega_SO=omega_SO)
+  )
+    
 }
 

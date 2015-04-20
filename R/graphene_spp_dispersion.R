@@ -88,7 +88,7 @@ beta<-function(q,omega,d=3.5e-10,eps_inf,omega_TO,omega_LO){
    #omega_TO<-c(448,791.7,1128.1)
    #omega_LO<-c(498.6,811.5,1270.6)
    
-   phonon_coupling(q,omega,d,omega_TO = omega_TO,omega_LO = omega_LO,eps_substrate = eps_inf)
+   phonon_coupling(q,omega,d,omega_TO = omega_TO,omega_LO = omega_LO,eps_substrate = eps_inf)$beta
 }
 
 #' Loss function
