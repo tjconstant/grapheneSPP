@@ -84,10 +84,6 @@ eps_total<-function(q,omega,eps_inf,E_f,tau,omega_TO,omega_LO){
 #' [2] Hwang, E. H., Sensarma, R. & Das Sarma, S. Phys. Rev. B (2010), 82, 195406   
 #' @export
 beta<-function(q,omega,d=3.5e-10,eps_inf,omega_TO,omega_LO){
-  
-   #omega_TO<-c(448,791.7,1128.1)
-   #omega_LO<-c(498.6,811.5,1270.6)
-   
    phonon_coupling(q,omega,d,omega_TO = omega_TO,omega_LO = omega_LO,eps_substrate = eps_inf)$beta
 }
 

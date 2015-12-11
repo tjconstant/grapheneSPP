@@ -6,31 +6,46 @@
 #' @param omega     angular frequency [s^-1]
 #' @param loss_matrix the log of the loss matrix
 #' @note Currently only 3 phonons supported
+#' 
+#' @examples 
+#' omega<-seq(0,60,,500)*2*pi*1e12
+#' q<-seq(0,2*pi/550e-9,,500)
+
+#' plot_it<-function(Ef){
+#'   loss_matrix<-log(loss_function(q,omega,eps_inf = 2.4,E_f = Ef,tau=1.5e-13))
+#'   result<-dispersion_extraction(q,omega,loss_matrix)
+#'   ggplot(result,aes(q,omega,color=factor(branch)))+geom_line(size=2)+theme_bw()+ylim(range(omega))
+#' }
+#' library(manipulate)
+#' manipulate(plot_it(E_f),E_f=slider(min = 0.000001,max = 1))
+
 #' @export
 
 dispersion_extraction<-function(q,omega,loss_matrix){
-  
-  maxima<-data.frame()
-  for(i in 2:length(omega)){
-  
-   q_max<-q[which(loss_matrix[,i]==max(loss_matrix[,i],na.rm = T))]
-   
-   if(i>3){
+phonon_SO_freqs<-phonon_coupling(q,omega,d=3.5e-10,omega_TO=c(448,791.7,1128.1),omega_LO=c(498.6,811.5,1270.6),
+                                 eps_graphene=3.9,
+                                 eps_substrate=2.4)$omega_SO
 
-   } 
-   
-   if(max(loss_matrix[,i],na.rm = T)>0){
-     maxima<-rbind(maxima,
-                   data.frame(
-                     q=q_max,omega=omega[i]))
-   }
+phonon_branch_ranges<-cut(omega,breaks = c(0,phonon_SO_freqs-1e12,Inf)) #-1e12 to correct for numerical error for branch assignment
+levels(phonon_branch_ranges)<-1:4
 
+new_q<-c()
+new_omega<-c()
+new_branch<-c()
+
+for(bn in 1:4){
+  for(i in 2:length(q)){
+    omega_max<-which(loss_matrix[i,]==max(loss_matrix[i,which(phonon_branch_ranges==bn)]))
+    new_q<-c(new_q,q[i])
+    new_omega<-c(new_omega,omega[omega_max])
+    new_branch<-c(new_branch,bn)
   }
-  
-  return(maxima)
 }
 
 
+result<-data.frame(q=new_q,omega=new_omega,branch=new_branch)
+return(result)
+}
 
 
 

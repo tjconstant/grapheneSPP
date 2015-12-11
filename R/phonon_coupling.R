@@ -42,7 +42,6 @@ phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
              )
   }
   
-  #print(omega_SO)
   
   omega_SO<-omega_SO*c_0*100*2*pi
   
@@ -55,14 +54,22 @@ phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
   #sum_matrix<-matrix(sum_vector,nrow=length(omega_TO))
   
   #return((eps_substrate*exp(-2*q*d)*rowSums(sum_matrix))^-1)
-
+  
+  phonon_sum<-rep(0,length(omega))
+  for(i in 1:length(omega_SO)){
+    phonon_sum<-phonon_sum+((alpha_phonons[i])*(omega_SO[i])^2/(omega^2-(omega_SO[i])^2))
+  }
+  
+  # This used to be the phonon sum, left here in case if ever needs to go back in
+  # ((alpha_phonons[1])*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
+  #  ((alpha_phonons[2])*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
+  #  ((alpha_phonons[3])*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
+  
   return(
     list(
       beta=
         (eps_substrate*exp(-2*q*d)*(
-          ((alpha_phonons[1])*(omega_SO[1])^2/(omega^2-(omega_SO[1])^2))+
-            ((alpha_phonons[2])*(omega_SO[2])^2/(omega^2-(omega_SO[2])^2))+
-            ((alpha_phonons[3])*(omega_SO[3])^2/(omega^2-(omega_SO[3])^2))
+          phonon_sum
           ))^-1,
       omega_SO=omega_SO)
   )
