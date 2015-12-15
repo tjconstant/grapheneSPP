@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphene_spp_dispersion.R
 \name{eps_total}
 \alias{eps_total}
-\title{Total dielectric function}
+\title{Total Dielectric Function}
 \usage{
 eps_total(q, omega, eps_inf, E_f, tau, omega_TO, omega_LO)
 }
@@ -17,11 +17,12 @@ eps_total(q, omega, eps_inf, E_f, tau, omega_TO, omega_LO)
 
 \item{tau}{relaxation time of electrons [s]}
 
-\item{d}{distance between graphene and substrate [m]}
+\item{omega_TO}{vector of frequencies of transverse optical phonons [cm^-1]}
+
+\item{omega_LO}{vector of frequencies of longitudinal optical phonons [cm^-1]}
 }
 \value{
 returns the total dielectirc function
-#'
 }
 \description{
 The total dielectric function within the random phase approximation

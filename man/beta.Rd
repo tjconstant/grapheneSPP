@@ -14,6 +14,10 @@ beta(q, omega, d = 3.5e-10, eps_inf, omega_TO, omega_LO)
 \item{d}{distance between graphene and substrate [m]}
 
 \item{eps_inf}{permittivity at infinity / high frequency dielectric constant}
+
+\item{omega_TO}{vector of frequencies of transverse optical phonons [cm^-1]}
+
+\item{omega_LO}{vector of frequencies of longitudinal optical phonons [cm^-1]}
 }
 \value{
 returns the coupling term beta

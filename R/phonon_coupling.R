@@ -8,7 +8,7 @@
 #' @param omega_TO vector of frequencies of transverse optical phonons [cm^-1]
 #' @param omega_LO vector of frequencies of longitudinal optical phonons [cm^-1]
 #' @param eps_graphene  static permittivity 
-#' @param eps_substate  permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)
+#' @param eps_substrate  permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)
 #' 
 #' @note Currently only 3 phonons supported
 #' @export

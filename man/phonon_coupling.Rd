@@ -20,7 +20,7 @@ phonon_coupling(q, omega, d = 3.5e-10, omega_TO, omega_LO,
 
 \item{eps_graphene}{static permittivity}
 
-\item{eps_substate}{permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)}
+\item{eps_substrate}{permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)}
 }
 \description{
 Function to return surface phonon frequencies and coupling coupling coefficents for dispersion

@@ -1,9 +1,9 @@
 Package: grapheneSPP
 Type: Package
-Title: What the package does (short line)
+Title: Graphene SPP Dispersion Calculation
 Version: 1.0
 Date: 2015-04-07
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Tom Constant
+Maintainer: <t.j.constant@gmail.com>
+Description: A package that calculates the graphene loss function using the Drude model, for the plotting of the surface plasmon dispersion relation.
+License: MIT + file LICENSE

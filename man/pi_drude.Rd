@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphene_spp_dispersion.R
 \name{pi_drude}
 \alias{pi_drude}
-\title{Simplifed Drude polarizability of uncoupled sheet}
+\title{Simplifed Drude Polarizability of Uncoupled Sheet}
 \usage{
 pi_drude(q, omega, eps_inf, E_f, tau)
 }
@@ -16,8 +16,6 @@ pi_drude(q, omega, eps_inf, E_f, tau)
 \item{E_f}{Fermi energy [J]}
 
 \item{tau}{relaxation time of electrons [s]}
-
-\item{d}{distance between graphene and substrate [m]}
 }
 \value{
 returns the total dielectirc function

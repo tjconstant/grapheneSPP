@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphene_spp_dispersion.R
 \name{loss_function}
 \alias{loss_function}
-\title{Loss function}
+\title{Loss Function}
 \usage{
 loss_function(q, omega, eps_inf, E_f, tau = 1e-13, omega_TO = c(448, 791.7,
   1128.1), omega_LO = c(498.6, 811.5, 1270.6))
@@ -17,6 +17,10 @@ loss_function(q, omega, eps_inf, E_f, tau = 1e-13, omega_TO = c(448, 791.7,
 \item{E_f}{Fermi energy [eV]}
 
 \item{tau}{relaxation time of electrons [s]}
+
+\item{omega_TO}{vector of frequencies of transverse optical phonons [cm^-1]}
+
+\item{omega_LO}{vector of frequencies of longitudinal optical phonons [cm^-1]}
 }
 \value{
 returns a matrix sutiable for plotting using image of the loss function as a function of both q and omega
@@ -25,11 +29,24 @@ returns a matrix sutiable for plotting using image of the loss function as a fun
 Imaginary part of the inverse of the total dielectric function
 }
 \examples{
-q<-seq(0,55,,500)*1e6
-omega<-seq(0,60,,500)*2*pi*1e12
+q <- seq(0,55,,500)*1e6
+omega <- seq(0,60,,500)*2*pi*1e12
 image(q/1e6,omega/(2*pi*1e12),
      log(loss_function(q,omega,eps_inf = 2.4,E_f = 0.37,tau=1e-12)),col=rev(grey(0:100/100)),
      xlab=expression(list(wavevector,italic(q)~(mu*m^-1))),
      ylab=expression(list(frequency,italic(f)~(THz))))
+}
+\references{
+Luxmoore, I. J. et al. ACS Photonics (2014) 1 (11), 1151-1155
+
+Low, T. & Avouris, P. ACS Nano (2014), 8, 1086
+
+Gan, C. H. Appl. Phys. Lett. (2012) 101 111609
+
+Yan, H. et al. Nat. Photonics (2013), 7, 394
+
+Wang, S Q. & Mahan G. D. Phys. Rev. B (1972) 6 4517
+
+Hwang, E. H., Sensarma, R. & Das Sarma, S. Phys. Rev. B (2010), 82, 195406
 }
 

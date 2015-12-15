@@ -2,7 +2,6 @@
 
 export(beta)
 export(dispersion_extraction)
-export(dispersion_extraction2)
 export(eps_total)
 export(loss_function)
 export(phonon_coupling)

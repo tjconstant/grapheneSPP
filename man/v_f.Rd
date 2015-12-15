@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphene_spp_dispersion.R
 \name{v_f}
 \alias{v_f}
-\title{2D Fourier transform of the Coulomb potential}
+\title{2D Fourier Transform of the Coulomb Potential}
 \usage{
 v_f(q, eps_inf)
 }
@@ -15,6 +15,6 @@ v_f(q, eps_inf)
 2D Fourier transform of the Coulomb potential
 }
 \description{
-2D Fourier transform of the Coulomb potential
+2D Fourier Transform of the Coulomb Potential
 }
 
