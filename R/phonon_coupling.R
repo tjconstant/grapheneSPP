@@ -10,7 +10,6 @@
 #' @param eps_graphene  static permittivity 
 #' @param eps_substrate  permittivity at infinity / high frequency dielectric constant (also refered to elsewhere as eps_inf)
 #' 
-#' @note Currently only 3 phonons supported
 #' @export
 phonon_coupling<-function(q,omega,d=3.5e-10,omega_TO,
                           omega_LO,
